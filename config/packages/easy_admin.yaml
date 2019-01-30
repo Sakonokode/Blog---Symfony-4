@@ -1,0 +1,13 @@
+imports:
+- { resource: admin/entities/user.yaml }
+
+easy_admin:
+  site_name: 'Blog'
+  design:
+    brand_color: '#B6885C'
+
+  list:
+    actions:
+      - { name: 'show', icon: 'search' }
+      - { name: 'edit', icon: 'pencil' }
+      - { name: 'delete', icon: 'trash' }

@@ -1,0 +1,41 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {# <link rel="stylesheet" href="{{ asset('css/index.css') }}">#}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-7">
+                <h2>
+                    Titre du post
+                </h2>
+                <p>
+                    Description du post
+                    {{ dump(users) }}
+                </p>
+                <div class="row">
+                    <div class="col">
+                        <h2>
+                            Auteur du post
+                        </h2>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col">
+                        <h2>
+                            Date du post
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

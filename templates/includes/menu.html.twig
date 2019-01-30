@@ -1,0 +1,19 @@
+<nav class="navbar sticky-top navbar-dark bg-primary">
+    <ul class="nav nav-pills" id="navigation-links">
+        <li class="nav-item">
+            <a class="nav-link active" href="{{ path('home') }}">Home</a>
+        </li>
+    </ul>
+    <ul class="nav nav-pills">
+        <li class="nav-item dropdown" id="account-links">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="#">Admin</a>
+                <a class="dropdown-item" href="{{ path('logout') }}">Logout</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+
