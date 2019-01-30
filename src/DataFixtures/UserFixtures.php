@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  */
 class UserFixtures extends Fixture
 {
-    private const USERS = [
+    public const USERS = [
         'Admin 1' => [
             'roles' => [
                 'ROLE_ADMIN',
@@ -62,6 +62,7 @@ class UserFixtures extends Fixture
     public function addUsers(array $users): void
     {
         foreach ($users as $user => $data) {
+            /** @var User $newUser */
             $newUser = new User();
             $newUser->setEmail($data['email']);
             $password = $this->passEncoder->encodePassword($newUser, $data['password']);
@@ -69,6 +70,7 @@ class UserFixtures extends Fixture
             $newUser->setIsActive($data['isActive']);
             $newUser->setRoles($data['roles']);
             $this->manager->persist($newUser);
+            $this->addReference($user, $newUser);
         }
     }
 

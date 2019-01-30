@@ -12,12 +12,14 @@ namespace Blog\Entity;
 use Blog\Traits\DescribableTrait;
 use Blog\Traits\EntityTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Post
  * @package Blog\Entity
  * @ORM\Entity(repositoryClass="Blog\Repository\PostRepository")
  * @ORM\Table(name="posts")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Post
 {
@@ -36,7 +38,7 @@ class Post
     /**
      * @var User $author
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Blog\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;

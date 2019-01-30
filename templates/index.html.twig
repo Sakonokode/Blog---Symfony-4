@@ -7,32 +7,35 @@
 
 {% block body %}
     <div class="container-fluid">
-        <div class="row">
-            <div class="col"></div>
-            <div class="col-7">
-                <h2>
-                    Titre du post
-                </h2>
-                <p>
-                    Description du post
-                    {{ dump(users) }}
-                </p>
-                <div class="row">
-                    <div class="col">
+        {% for post in posts %}
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-7">
+                    <div class="jumbotron">
                         <h2>
-                            Auteur du post
+                            {{ post.title }}
                         </h2>
-                    </div>
-                    <div class="col"></div>
-                    <div class="col">
-                        <h2>
-                            Date du post
-                        </h2>
+                        <p>
+                            {{ post.description }}
+                        </p>
+                        <div class="row">
+                            <div class="col">
+                                <h2>
+                                    {{ post.author.email }}
+                                </h2>
+                            </div>
+                            <div class="col"></div>
+                            <div class="col">
+                                <h2>
+                                    {{ post.created|date("d/m/Y") }}
+                                </h2>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="col"></div>
             </div>
-            <div class="col"></div>
-        </div>
+        {% endfor %}
     </div>
 {% endblock %}
 

@@ -8,6 +8,7 @@
 
 namespace Blog\Controller;
 
+use Blog\Entity\Post;
 use Blog\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,10 +39,10 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        $users = $this->entityManager->getRepository(User::class)->findAll();
+        $posts = $this->entityManager->getRepository(Post::class)->findAll();
 
         return $this->render('index.html.twig', [
-            'users' => $users,
+            'posts' => $posts,
         ]);
     }
 }
