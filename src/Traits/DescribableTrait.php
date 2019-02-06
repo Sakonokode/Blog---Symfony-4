@@ -19,7 +19,7 @@ trait DescribableTrait
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", nullable=true, length=255)
      * @Assert\NotBlank
      */
     private $title;
@@ -40,9 +40,9 @@ trait DescribableTrait
     private $description;
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }

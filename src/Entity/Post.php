@@ -48,9 +48,9 @@ class Post
     private $author;
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getContent(): string
+    public function getContent(): ?string
     {
         return $this->content;
     }
