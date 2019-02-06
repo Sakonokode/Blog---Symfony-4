@@ -9,6 +9,7 @@
 namespace Blog\Entity;
 
 
+use Blog\Traits\CommentableTrait;
 use Blog\Traits\DescribableTrait;
 use Blog\Traits\EntityTrait;
 use Doctrine\ORM\Mapping as ORM;
@@ -25,6 +26,7 @@ class Post
 {
     use EntityTrait;
     use DescribableTrait;
+    use CommentableTrait;
 
     /**
      * @var string $content
