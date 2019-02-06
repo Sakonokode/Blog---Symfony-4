@@ -115,9 +115,9 @@ trait EntityTrait
     }
 
     /**
-     * @return DateTime
+     * @return null|DateTime
      */
-    public function getDeleted(): DateTime
+    public function getDeleted(): ?DateTime
     {
         return $this->deleted;
     }

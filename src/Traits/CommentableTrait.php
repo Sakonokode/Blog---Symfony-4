@@ -14,8 +14,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 trait CommentableTrait
 {
-    use EntityTrait;
-
     /**
      * @var Comment[]|ArrayCollection $comments
      * @ORM\ManyToMany(targetEntity="Blog\Entity\Comment")

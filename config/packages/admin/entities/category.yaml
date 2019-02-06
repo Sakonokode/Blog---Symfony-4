@@ -1,0 +1,17 @@
+easy_admin:
+  entities:
+    Category:
+      disabled_actions: ['delete']
+      class: Blog\Entity\Category
+      controller: Blog\Controller\CategoryController
+      form:
+        fields:
+          - { property: 'title', label: 'Title', type: 'text' }
+          - { property: 'description', label: 'Description', type: 'text' }
+
+      list:
+        fields:
+          - { property: 'id' }
+          - { property: 'title' }
+          - { property: 'description' }
+          - { property: 'deleted' }

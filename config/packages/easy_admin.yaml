@@ -1,5 +1,6 @@
 imports:
 - { resource: admin/entities/user.yaml }
+- { resource: admin/entities/category.yaml }
 
 easy_admin:
   site_name: 'Blog'

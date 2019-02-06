@@ -33,7 +33,7 @@ trait DescribableTrait
     /**
      * @var string $description
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      * @Assert\NotBlank(message="post.blank_summary")
      * @Assert\Length(max=255)
      */
@@ -72,9 +72,9 @@ trait DescribableTrait
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }

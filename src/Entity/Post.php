@@ -9,6 +9,7 @@
 namespace Blog\Entity;
 
 
+use Blog\Traits\CategorizableTrait;
 use Blog\Traits\CommentableTrait;
 use Blog\Traits\DescribableTrait;
 use Blog\Traits\EntityTrait;
@@ -27,6 +28,7 @@ class Post
     use EntityTrait;
     use DescribableTrait;
     use CommentableTrait;
+    use CategorizableTrait;
 
     /**
      * @var string $content

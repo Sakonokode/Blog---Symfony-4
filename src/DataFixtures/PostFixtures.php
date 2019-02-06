@@ -54,16 +54,20 @@ class PostFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $this->manager = $manager;
+        $category = $this->getReference(CategoryFixtures::CATEGORY_GAMES);
 
         foreach (self::POSTS as $post => $data) {
             $newPost = new Post();
             $newPost->setTitle($data['title']);
             $newPost->setDescription($data['description']);
             $newPost->setContent($data['content']);
+            $newPost->setCategories([$category]);
             /** @var UserRepository $userRepo */
             $userRepo = $this->manager->getRepository(User::class);
             $author = $userRepo->find(1);
-            $newPost->setAuthor($author);
+            if ($author) {
+                $newPost->setAuthor($author);
+            }
             $this->manager->persist($newPost);
         }
 
@@ -77,6 +81,7 @@ class PostFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             UserFixtures::class,
+            CategoryFixtures::class,
         ];
     }
 }
