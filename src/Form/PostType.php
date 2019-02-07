@@ -8,8 +8,11 @@
 
 namespace Blog\Form;
 
+use Blog\Entity\Category;
 use Blog\Entity\Post;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -44,10 +47,23 @@ class PostType extends AbstractType
                 'help' => 'description',
                 'label' => 'label.description',
             ])
-            ->add('content', null, [
-                'attr' => ['rows' => 20],
+            ->add('content', TextareaType::class, [
+                'attr' => [
+                    'rows' => 10,
+                    'cols' => 10,
+                    'class' => 'form-control',
+                ],
                 'help' => 'help.post_content',
                 'label' => 'label.content',
+            ])
+            ->add('categories', EntityType::class, [
+                'class' => Category::class,
+                'multiple' => true,
+                'attr' => [
+                    'placeholder' => 'form.categories',
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.categories'
             ])
         ;
     }

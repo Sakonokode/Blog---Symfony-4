@@ -6,10 +6,10 @@
     </ul>
     <ul class="nav nav-pills">
         <li class="nav-item dropdown" id="account-links">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
+            <button class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</button>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="#">Profile</a>
-                <a class="dropdown-item" href="#">Admin</a>
+                <a class="dropdown-item" href="{{ path('easyadmin') }}">Admin</a>
                 <a class="dropdown-item" href="{{ path('logout') }}">Logout</a>
             </div>
         </li>

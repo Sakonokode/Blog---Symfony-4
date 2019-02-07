@@ -1,8 +1,8 @@
 easy_admin:
   entities:
-    Movie:
+    Post:
       class: Blog\Entity\Post
-      controller: Alexandria\Controller\PostController
+      controller: Blog\Controller\PostController
       form:
 
         fields:
@@ -15,8 +15,6 @@ easy_admin:
         fields:
           - { property: 'id' }
           - { property: 'title' }
-          - { property: 'duration' }
-          - { property: 'date' }
           - { property: 'categories' }
           - { property: 'slug', label: 'Slug', type: 'text'}
           - { property: 'comments' }
