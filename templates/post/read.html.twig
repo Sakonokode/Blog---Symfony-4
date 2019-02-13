@@ -28,6 +28,11 @@
                             <h3>
                                 {{ post.created|date("d/m/Y") }}
                             </h3>
+                            <div class="post-actions">
+                                <a href="{{ path('post_edit', {'slug': post.slug}) }}">
+                                    <i class="far fa-edit">{{ 'Edit' }}</i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

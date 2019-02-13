@@ -66,4 +66,32 @@ class PostController extends AbstractController
             'post' => $post,
         ]);
     }
+
+    /**
+     * @Route("/post/edit/{slug}", name="post_edit")
+     * @Method("POST")
+     * @IsGranted("ROLE_USER")
+     * @param Request $request
+     * @param Post $post
+     * @return Response
+     */
+    public function edit(Request $request, Post $post): Response
+    {
+        $form = $this->createForm(PostType::class, $post);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            $this->addFlash('success', 'post.updated_successfully');
+
+            return $this->redirectToRoute('read', ['slug' => $post->getSlug()]);
+        }
+
+        return $this->render('post/edit.html.twig', [
+            'post' => $post,
+            'form' => $form->createView()
+        ]);
+    }
 }
