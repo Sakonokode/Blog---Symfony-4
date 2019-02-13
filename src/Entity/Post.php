@@ -13,6 +13,7 @@ use Blog\Traits\CategorizableTrait;
 use Blog\Traits\CommentableTrait;
 use Blog\Traits\DescribableTrait;
 use Blog\Traits\EntityTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -48,6 +49,42 @@ class Post
     private $author;
 
     /**
+     * @var Tag[]|ArrayCollection $tags
+     * @ORM\ManyToMany(targetEntity="Blog\Entity\Tag", cascade={persist})
+     * @ORM\JoinTable(name="post_tag")
+     * @ORM\OrderBy({"name": "ASC"})
+     */
+    private $tags;
+
+    /**
+     * Post constructor.
+     */
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
+
+    /**
+     * @param Tag ...$tags
+     */
+    public function addTag(Tag ...$tags): void
+    {
+        foreach ($tags as $tag) {
+            if (!$this->tags->contains($tag)) {
+                $this->tags->add($tag);
+            }
+        }
+    }
+
+    /**
+     * @param Tag $tag
+     */
+    public function removeTag(Tag $tag): void
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
      * @return null|string
      */
     public function getContent(): ?string
@@ -77,5 +114,21 @@ class Post
     public function setAuthor(User $author): void
     {
         $this->author = $author;
+    }
+
+    /**
+     * @return Tag[]|ArrayCollection
+     */
+    public function getTags(): ArrayCollection
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param Tag[]|ArrayCollection $tags
+     */
+    public function setTags($tags): void
+    {
+        $this->tags = $tags;
     }
 }
